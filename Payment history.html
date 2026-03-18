@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment History — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="top-header">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <nav class="main-nav" aria-label="Main menu">
+    <ul>
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Dashboard</a></li>
+      <li><a href="verify-identity.html"><span class="nav-icon">🪪</span>Verify Identity</a></li>
+      <li><a href="collect-pension.html"><span class="nav-icon">💰</span>Collect Pension</a></li>
+      <li><a href="payment-history.html" class="active" aria-current="page"><span class="nav-icon">📋</span>Payment History</a></li>
+      <li><a href="help.html" class="help-btn"><span class="nav-icon">❓</span>Help &amp; Support</a></li>
+    </ul>
+  </nav>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <strong>Payment History</strong></nav>
+
+  <main class="page-content">
+    <h1 class="page-title">📋 Your Past Payments</h1>
+    <div class="info-card" style="padding:14px 20px;margin-bottom:14px">
+      <p><strong>Total received (2025):</strong> P 5,000.00 &nbsp;|&nbsp; <strong>Payments:</strong> 4</p>
+    </div>
+    <table class="history-table" aria-label="Payment history">
+      <thead>
+        <tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 April 2025</td><td><strong>P 1,250.00</strong></td><td>Bank Transfer</td>
+          <td class="status-paid">✅ Paid</td><td><a href="#" style="color:#1a5276;font-weight:700">View</a></td>
+        </tr>
+        <tr>
+          <td>1 March 2025</td><td><strong>P 1,250.00</strong></td><td>Bank Transfer</td>
+          <td class="status-paid">✅ Paid</td><td><a href="#" style="color:#1a5276;font-weight:700">View</a></td>
+        </tr>
+        <tr>
+          <td>1 February 2025</td><td><strong>P 1,250.00</strong></td><td>Mobile Money</td>
+          <td class="status-paid">✅ Paid</td><td><a href="#" style="color:#1a5276;font-weight:700">View</a></td>
+        </tr>
+        <tr>
+          <td>1 January 2025</td><td><strong>P 1,250.00</strong></td><td>Cash Pickup</td>
+          <td class="status-paid">✅ Paid</td><td><a href="#" style="color:#1a5276;font-weight:700">View</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <footer>Pension Verification System © 2025</footer>
+</body>
+</html>
