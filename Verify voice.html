@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Verification — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .waveform { display: flex; align-items: flex-end; gap: 4px; height: 50px; justify-content: center; margin: 10px 0; }
+    .wave-bar { width: 6px; background: #1a5276; border-radius: 3px; transition: height 0.1s; }
+    @keyframes wave-anim {
+      0%   { height: 6px; }
+      50%  { height: 40px; }
+      100% { height: 6px; }
+    }
+    .recording .wave-bar:nth-child(1){animation:wave-anim 0.6s 0.0s infinite;}
+    .recording .wave-bar:nth-child(2){animation:wave-anim 0.6s 0.1s infinite;}
+    .recording .wave-bar:nth-child(3){animation:wave-anim 0.6s 0.2s infinite;}
+    .recording .wave-bar:nth-child(4){animation:wave-anim 0.6s 0.3s infinite;}
+    .recording .wave-bar:nth-child(5){animation:wave-anim 0.6s 0.2s infinite;}
+    .recording .wave-bar:nth-child(6){animation:wave-anim 0.6s 0.1s infinite;}
+    .recording .wave-bar:nth-child(7){animation:wave-anim 0.6s 0.0s infinite;}
+  </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <a href="verify-identity.html">Verify Identity</a> › <strong>Voice Print</strong></nav>
+
+  <main class="page-content">
+    <h1 class="page-title">🎙️ Voice Verification</h1>
+    <div class="alert alert-info">ℹ️ Speak clearly in a quiet place. Press the microphone button and repeat the phrase below.</div>
+
+    <div class="info-card">
+      <h2>Repeat this phrase aloud:</h2>
+      <div class="voice-phrase-box" id="phrase">
+        "My name is Kgosi and I am collecting my pension today."
+      </div>
+      <p style="font-size:14px;color:#777;text-align:center">Speak slowly and clearly — just like you would to a person</p>
+
+      <div class="waveform" id="waveform">
+        <div class="wave-bar" style="height:8px"></div>
+        <div class="wave-bar" style="height:14px"></div>
+        <div class="wave-bar" style="height:20px"></div>
+        <div class="wave-bar" style="height:30px"></div>
+        <div class="wave-bar" style="height:20px"></div>
+        <div class="wave-bar" style="height:14px"></div>
+        <div class="wave-bar" style="height:8px"></div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="mic-btn" id="mic-btn" onclick="toggleRecord()" title="Press to record">
+          🎙️
+        </button>
+        <p id="mic-label" style="font-size:14px;color:#777;margin-top:6px">Press the microphone to start recording</p>
+      </div>
+
+      <div id="voice-alert"></div>
+
+      <button class="btn-secondary" onclick="window.location.reload()" style="width:100%;text-align:center;margin-top:6px">
+        🔄 Try Again
+      </button>
+    </div>
+  </main>
+  <footer>Pension Verification System © 2025</footer>
+
+  <script>
+    let isRecording = false, timer;
+    function toggleRecord() {
+      const btn = document.getElementById('mic-btn');
+      const wf  = document.getElementById('waveform');
+      const lbl = document.getElementById('mic-label');
+      if(!isRecording) {
+        isRecording = true;
+        btn.classList.add('recording');
+        btn.textContent = '⏹️';
+        wf.classList.add('recording');
+        lbl.textContent = 'Recording… speak now';
+        timer = setTimeout(()=>{ stopRecord(true); }, 5000);
+      } else { clearTimeout(timer); stopRecord(true); }
+    }
+    function stopRecord(success) {
+      isRecording = false;
+      const btn = document.getElementById('mic-btn');
+      const wf  = document.getElementById('waveform');
+      btn.classList.remove('recording');
+      btn.textContent = '🎙️';
+      wf.classList.remove('recording');
+      document.getElementById('mic-label').textContent = 'Recording complete';
+      if(success) {
+        document.getElementById('voice-alert').innerHTML = '<div class="alert alert-success">✅ Voice recorded! Verifying…</div>';
+        setTimeout(()=>{ window.location.href='collect-pension.html'; }, 1800);
+      }
+    }
+  </script>
+</body>
+</html>
