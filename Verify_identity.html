@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify Identity — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="top-header" role="banner">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <div class="lang-bar">
+    <button class="active">English</button>
+    <button>Setswana</button>
+  </div>
+  <nav class="main-nav" aria-label="Main menu">
+    <ul>
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Dashboard</a></li>
+      <li><a href="verify-identity.html" class="active" aria-current="page"><span class="nav-icon">🪪</span>Verify Identity</a></li>
+      <li><a href="collect-pension.html"><span class="nav-icon">💰</span>Collect Pension</a></li>
+      <li><a href="payment-history.html"><span class="nav-icon">📋</span>Payment History</a></li>
+      <li><a href="help.html" class="help-btn"><span class="nav-icon">❓</span>Help &amp; Support</a></li>
+    </ul>
+  </nav>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <strong>Verify Identity</strong></nav>
+
+  <main class="page-content" role="main">
+    <h1 class="page-title">🪪 Choose Your Verification Method</h1>
+    <div class="alert alert-info">ℹ️ Please choose how you want to prove who you are. You only need to use one method.</div>
+
+    <div class="method-grid">
+      <a href="verify-face.html" class="method-btn">
+        <span class="method-icon">📷</span>
+        <div>
+          <div>Face Scan</div>
+          <div style="font-size:14px;color:#777;font-weight:400">Look at the camera — Front, Left, Right</div>
+        </div>
+        <span style="margin-left:auto;font-size:22px;color:#aac8e8">›</span>
+      </a>
+      <a href="verify-voice.html" class="method-btn">
+        <span class="method-icon">🎙️</span>
+        <div>
+          <div>Voice Print</div>
+          <div style="font-size:14px;color:#777;font-weight:400">Repeat a short phrase aloud</div>
+        </div>
+        <span style="margin-left:auto;font-size:22px;color:#aac8e8">›</span>
+      </a>
+      <a href="verify-fingerprint.html" class="method-btn">
+        <span class="method-icon">🖐️</span>
+        <div>
+          <div>Fingerprint</div>
+          <div style="font-size:14px;color:#777;font-weight:400">Place your thumb on the scanner</div>
+        </div>
+        <span style="margin-left:auto;font-size:22px;color:#aac8e8">›</span>
+      </a>
+    </div>
+
+    <div class="info-card" style="margin-top:10px">
+      <h2>🪪 Or Scan Your Omang (ID Card)</h2>
+      <p>Take a photo of your Omang identity card to verify your details.</p>
+      <a href="#" class="btn-primary">📷 Scan Omang Card</a>
+    </div>
+  </main>
+  <footer>Pension Verification System © 2025 — Government of Botswana</footer>
+</body>
+</html>
