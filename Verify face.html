@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Scan — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .camera-preview { background: #1a1a2e; border-radius: 16px; height: 220px; display: flex; align-items: center; justify-content: center; margin: 16px 0; font-size: 60px; position: relative; overflow: hidden; }
+    .camera-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .face-outline { width: 140px; height: 170px; border: 3px dashed rgba(255,255,255,0.5); border-radius: 50%; }
+    .camera-label { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); color: white; font-size: 13px; font-weight: 700; background: rgba(0,0,0,0.5); padding: 4px 12px; border-radius: 20px; }
+    .step-indicator { display: flex; gap: 8px; justify-content: center; margin: 12px 0 20px; }
+    .step-dot { width: 12px; height: 12px; border-radius: 50%; background: #aac8e8; transition: background 0.3s; }
+    .step-dot.done { background: #1a7a4a; }
+    .step-dot.active { background: #1a5276; transform: scale(1.3); }
+  </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <a href="verify-identity.html">Verify Identity</a> › <strong>Face Scan</strong></nav>
+
+  <main class="page-content">
+    <h1 class="page-title">📷 Face Scan</h1>
+    <div class="alert alert-info">ℹ️ Make sure you are in a <strong>well-lit area</strong> and look directly at the camera.</div>
+
+    <div class="info-card">
+      <h2 id="step-title">Step 1 of 3 — Look Straight (Front)</h2>
+      <div class="step-indicator">
+        <div class="step-dot active" id="dot1" title="Front"></div>
+        <div class="step-dot" id="dot2" title="Left"></div>
+        <div class="step-dot" id="dot3" title="Right"></div>
+      </div>
+
+      <div class="camera-preview">
+        <div class="camera-overlay">
+          <div class="face-outline"></div>
+        </div>
+        <div class="camera-label" id="cam-label">Position your face in the oval</div>
+      </div>
+
+      <div class="face-grid">
+        <button class="face-box active" id="fb-front" onclick="setFace(0)">
+          <span class="face-icon">😐</span>
+          <span>Front</span>
+        </button>
+        <button class="face-box" id="fb-left" onclick="setFace(1)">
+          <span class="face-icon">👈</span>
+          <span>Left</span>
+        </button>
+        <button class="face-box" id="fb-right" onclick="setFace(2)">
+          <span class="face-icon">👉</span>
+          <span>Right</span>
+        </button>
+      </div>
+
+      <div id="scan-alert"></div>
+
+      <button class="btn-primary" id="scan-btn" onclick="doScan()" style="width:100%;text-align:center">
+        📷 Capture — Front
+      </button>
+    </div>
+  </main>
+  <footer>Pension Verification System © 2025</footer>
+
+  <script>
+    const steps = [
+      { label:'Step 1 of 3 — Look Straight (Front)', icon:'😐', name:'Front', cam:'Position your face in the oval' },
+      { label:'Step 2 of 3 — Turn Left',             icon:'👈', name:'Left',  cam:'Now slowly turn your face to the LEFT' },
+      { label:'Step 3 of 3 — Turn Right',            icon:'👉', name:'Right', cam:'Now slowly turn your face to the RIGHT' },
+    ];
+    let current = 0;
+
+    function setFace(i) {
+      current = i;
+      document.querySelectorAll('.face-box').forEach((b,j)=>b.classList.toggle('active',i===j));
+      document.getElementById('step-title').textContent = steps[i].label;
+      document.getElementById('cam-label').textContent = steps[i].cam;
+      document.getElementById('scan-btn').textContent = '📷 Capture — ' + steps[i].name;
+    }
+
+    function doScan() {
+      const dot = document.getElementById('dot'+(current+1));
+      dot.classList.remove('active');
+      dot.classList.add('done');
+      document.getElementById('scan-alert').innerHTML = '<div class="alert alert-success">✅ ' + steps[current].name + ' photo captured!</div>';
+      if(current < 2) {
+        setTimeout(()=>{ setFace(current+1); document.getElementById('dot'+(current+1)).classList.add('active'); document.getElementById('scan-alert').innerHTML=''; }, 1000);
+      } else {
+        setTimeout(()=>{ window.location.href='collect-pension.html'; }, 1200);
+      }
+    }
+  </script>
+</body>
+</html>
