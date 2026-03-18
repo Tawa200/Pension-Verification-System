@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Pension Verification System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="top-header" role="banner">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <div class="lang-bar">
+    <button class="active">English</button>
+    <button>Setswana</button>
+  </div>
+  <nav class="main-nav" role="navigation" aria-label="Main menu">
+    <ul>
+      <li><a href="index.html" class="active" aria-current="page"><span class="nav-icon">🏠</span>Dashboard</a></li>
+      <li><a href="verify-identity.html"><span class="nav-icon">🪪</span>Verify Identity</a></li>
+      <li><a href="collect-pension.html"><span class="nav-icon">💰</span>Collect Pension</a></li>
+      <li><a href="payment-history.html"><span class="nav-icon">📋</span>Payment History</a></li>
+      <li><a href="help.html" class="help-btn"><span class="nav-icon">❓</span>Help &amp; Support</a></li>
+    </ul>
+  </nav>
+  <nav class="breadcrumb" aria-label="Breadcrumb"><strong>Home</strong></nav>
+
+  <main class="page-content" role="main">
+    <div class="hero-card">
+      <h1>Welcome back, Mr. Kgosi 👋</h1>
+      <p>Your pension payment is ready. Please verify your identity to collect it.</p>
+      <div style="margin-top:12px">
+        <span class="badge badge-green">✅ Identity Verified</span>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h2>Next Payment</h2>
+        <p>1 May 2025</p>
+        <p style="font-size:18px;font-weight:800;color:#1a5276;margin-top:6px">P 1,250.00</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h2>Identity Status</h2>
+        <span class="badge badge-green">Verified</span>
+        <p style="margin-top:6px">April 2025</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h2>Last Payment</h2>
+        <p>1 April 2025</p>
+        <span class="badge badge-green" style="margin-top:6px">✅ Received</span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>What would you like to do?</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+        <a href="verify-identity.html" class="btn-primary">🪪 Verify Identity</a>
+        <a href="collect-pension.html" class="btn-secondary">💰 Collect Pension</a>
+      </div>
+    </div>
+
+    <div class="alert alert-info">📞 Need help? Call <strong>0800-PENSION</strong> anytime Monday–Friday 8am–5pm.</div>
+  </main>
+  <footer>Pension Verification System © 2025 — Government of Botswana</footer>
+</body>
+</html>
