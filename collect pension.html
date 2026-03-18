@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collect Pension — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="top-header">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <div class="lang-bar">
+    <button class="active">English</button>
+    <button>Setswana</button>
+  </div>
+  <nav class="main-nav" aria-label="Main menu">
+    <ul>
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Dashboard</a></li>
+      <li><a href="verify-identity.html"><span class="nav-icon">🪪</span>Verify Identity</a></li>
+      <li><a href="collect-pension.html" class="active" aria-current="page"><span class="nav-icon">💰</span>Collect Pension</a></li>
+      <li><a href="payment-history.html"><span class="nav-icon">📋</span>Payment History</a></li>
+      <li><a href="help.html" class="help-btn"><span class="nav-icon">❓</span>Help &amp; Support</a></li>
+    </ul>
+  </nav>
+  <nav class="sub-nav">
+    <a href="#bank" class="active"><span class="sub-icon">🏦</span>Bank Transfer</a>
+    <a href="#mobile"><span class="sub-icon">📱</span>Mobile Money</a>
+    <a href="#cash"><span class="sub-icon">💵</span>Cash Pickup</a>
+  </nav>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <strong>Collect Pension</strong></nav>
+
+  <main class="page-content">
+    <h1 class="page-title">💰 Collect Your Pension</h1>
+    <div class="alert alert-success">✅ Identity verified. Your pension of <strong>P 1,250.00</strong> is ready.</div>
+
+    <div class="info-card" id="bank">
+      <h2>🏦 Bank Transfer</h2>
+      <p>Your payment will be sent directly to your bank account.</p>
+      <div style="background:#eaf2fb;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:16px">
+        <strong>Account ending:</strong> ••••4321<br/>
+        <strong>Bank:</strong> First National Bank<br/>
+        <strong>Amount:</strong> P 1,250.00
+      </div>
+      <button class="btn-primary" onclick="confirm('Bank Transfer')">✅ Confirm Bank Transfer</button>
+    </div>
+
+    <div class="info-card" id="mobile">
+      <h2>📱 Mobile Money</h2>
+      <p>Receive your pension directly to your mobile money wallet (e.g. Orange Money, MyZaka).</p>
+      <div class="form-group" style="margin-top:14px">
+        <label for="mobile-num">📱 Mobile Number</label>
+        <input type="tel" id="mobile-num" placeholder="e.g. 71234567" inputmode="numeric"/>
+      </div>
+      <button class="btn-primary" onclick="confirm('Mobile Money')">✅ Confirm Mobile Transfer</button>
+    </div>
+
+    <div class="info-card" id="cash">
+      <h2>💵 Cash Pickup</h2>
+      <p>Collect your cash in person at your nearest pension office. <strong>Bring your Omang card.</strong></p>
+      <a href="help.html#office" class="btn-secondary" style="display:inline-block">📍 Find Nearest Office</a>
+    </div>
+
+    <div id="confirm-alert"></div>
+  </main>
+  <footer>Pension Verification System © 2025</footer>
+  <script>
+    function confirm(method) {
+      document.getElementById('confirm-alert').innerHTML =
+        '<div class="alert alert-success">✅ ' + method + ' confirmed! Your pension of P 1,250.00 will be processed within 1–2 business days.</div>';
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  </script>
+</body>
+</html>
