@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fingerprint — PVS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="top-header">
+    <div class="site-title">🏛️ Pension Verification System</div>
+    <div class="user-info">👤 Mr. Kgosi</div>
+  </header>
+  <nav class="breadcrumb"><a href="index.html">Home</a> › <a href="verify-identity.html">Verify Identity</a> › <strong>Fingerprint</strong></nav>
+
+  <main class="page-content">
+    <h1 class="page-title">🖐️ Fingerprint Scan</h1>
+    <div class="alert alert-info">ℹ️ Place your <strong>right thumb</strong> firmly on the scanner and hold still for 3 seconds.</div>
+
+    <div class="info-card" style="text-align:center">
+      <h2>Scan Your Finger</h2>
+      <p>Press the button below to start the fingerprint scanner.</p>
+
+      <div class="fingerprint-area" id="fp-area">
+        <svg class="fingerprint-svg" viewBox="0 0 130 130" fill="none" id="fp-svg">
+          <circle cx="65" cy="65" r="60" stroke="#aac8e8" stroke-width="2" fill="#eaf2fb"/>
+          <circle cx="65" cy="65" r="10" stroke="#1a5276" stroke-width="2.5" fill="none"/>
+          <circle cx="65" cy="65" r="20" stroke="#1a5276" stroke-width="2" fill="none" opacity="0.8"/>
+          <circle cx="65" cy="65" r="30" stroke="#1a5276" stroke-width="1.8" fill="none" opacity="0.65"/>
+          <circle cx="65" cy="65" r="40" stroke="#1a5276" stroke-width="1.5" fill="none" opacity="0.50"/>
+          <circle cx="65" cy="65" r="50" stroke="#1a5276" stroke-width="1.2" fill="none" opacity="0.35"/>
+          <circle cx="65" cy="65" r="58" stroke="#aac8e8" stroke-width="1" fill="none" opacity="0.4"/>
+        </svg>
+        <div class="fp-status" id="fp-status">Waiting for finger…</div>
+      </div>
+
+      <button class="btn-primary" id="scan-btn" onclick="startScan()" style="width:100%;max-width:320px;text-align:center">
+        🖐️ Start Fingerprint Scan
+      </button>
+
+      <div id="fp-alert" style="margin-top:12px"></div>
+    </div>
+  </main>
+  <footer>Pension Verification System © 2025</footer>
+
+  <script>
+    function startScan() {
+      const area = document.getElementById('fp-area');
+      const status = document.getElementById('fp-status');
+      const btn = document.getElementById('scan-btn');
+      btn.disabled = true;
+      btn.textContent = 'Scanning…';
+      area.classList.add('scanning');
+      status.textContent = 'Scanning… hold still';
+      let count = 3;
+      const tick = setInterval(()=>{
+        count--;
+        status.textContent = 'Hold still… ' + count + 's';
+        if(count<=0) {
+          clearInterval(tick);
+          area.classList.remove('scanning');
+          status.textContent = '✅ Fingerprint matched!';
+          document.getElementById('fp-svg').style.cssText='filter:hue-rotate(100deg) saturate(1.5)';
+          document.getElementById('fp-alert').innerHTML='<div class="alert alert-success">✅ Identity verified successfully!</div>';
+          btn.textContent='Continue →';
+          btn.disabled=false;
+          btn.onclick=()=>window.location.href='collect-pension.html';
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
